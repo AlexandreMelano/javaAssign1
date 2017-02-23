@@ -20,7 +20,8 @@ public class Person {
     
     public Person(String first, String last, String address, String city, String prov, String postal, LocalDate dob)
     {
-        firstName = first;
+       // firstName = first;
+        firstName = setFirstName(first);
         lastName = last;
         streetAddress = address;
         this.city = city;
@@ -57,11 +58,10 @@ public class Person {
     This method will return the fullAddress all together
     */
     
-    public String toString()
+    public String getFullAddress()
     {
-        return streetAddress + " " + city + " " + province + " " + postalCode;
+        return streetAddress + ", " + city + ", " + province + ", " + postalCode;
     }
-    
     
         
 //    if (postal.length() == 6)
@@ -77,8 +77,10 @@ public class Person {
 //               throw new IllegalArgumentException("Postal code must be 6 characters with a space");
     
 
-    public void setFirstName(String firstName) {
+    public String setFirstName(String firstName) {
+        if (firstName != "")
         this.firstName = firstName;
+        return firstName;
     }
 
     public void setLastName(String lastName) {
