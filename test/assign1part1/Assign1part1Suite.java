@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author User1
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({assign1part1.Assign1part1Test.class, assign1part1.PersonTest.class})
+@Suite.SuiteClasses({Assign1part1Test.class, StudentTest.class, InstructorTest.class, assign1part1.PersonTest.class})
 public class Assign1part1Suite {
 
     @BeforeClass

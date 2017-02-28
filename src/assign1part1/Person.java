@@ -14,8 +14,8 @@ import java.time.Period;
  */
 public class Person {
     
-    private String firstName, lastName, streetAddress, city, province, postalCode;
-    private LocalDate birthdate;
+    String firstName, lastName, streetAddress, city, province, postalCode;
+    public LocalDate birthdate;
     
     
     public Person(String first, String last, String address, String city, String prov, String postal, LocalDate dob)
@@ -63,6 +63,10 @@ public class Person {
         return streetAddress + ", " + city + ", " + province + ", " + postalCode;
     }
     
+    public void changeAddress(String streetAddress, String city, String province, String postal)
+    {
+        
+    }
         
 //    if (postal.length() == 6)
 //       this.postalCode = postal;
@@ -105,7 +109,7 @@ public class Person {
 
     
 
-    public void setBirthdate(LocalDate birthdate) {
+    public void setBirthday(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -133,7 +137,7 @@ public class Person {
         return postalCode;
     }
 
-    public LocalDate getBirthdate() {
+    public LocalDate getBirthday() {
         return birthdate;
     }
     
