@@ -14,8 +14,8 @@ import java.time.Period;
  */
 public class Person {
     
-    String firstName, lastName, streetAddress, city, province, postalCode;
-    public LocalDate birthdate;
+    private String firstName, lastName, streetAddress, city, province, postalCode;
+    protected LocalDate birthdate;
     
     
     public Person(String first, String last, String address, String city, String prov, String postal, LocalDate dob)
@@ -26,33 +26,26 @@ public class Person {
         streetAddress = address;
         this.city = city;
         province = prov; 
-        postalCode = postalCode(postal);
+        setPostalCode(postal);
         birthdate = dob;
         
     }
     /*
     This method sets the age for a Person
     */
-    public int getAge(LocalDate dob)
+    public int getAge()
     {
-        LocalDate today = LocalDate.now();
+//        LocalDate today = LocalDate.now();
+//        
+//        int age = Period.between(birthdate, today).getYears();
         
-        int age = Period.between(birthdate, today).getYears();
-         if (age >= 14 && age <= 115) // valid employee dob
-            this.birthdate = dob;
-        else
-            throw new IllegalArgumentException("the Person must be between 14-115");
+//         if (age >= 14 && age <= 90) // valid employee dob
+//            this.birthdate = dob;
+//        else
+//            throw new IllegalArgumentException("the Person must be between 14-90");
         
-        return age;
+        return LocalDate.now().getYear()-birthdate.getYear();
     }
-    
-     public String postalCode(String postal) {
-   
-        
-        if ((postal.length() > 6 || postal.length() < 6))
-            throw new IllegalArgumentException("Must be 6 characters");
-        return postal;
-     }
     
     /*
     This method will return the fullAddress all together
@@ -65,21 +58,18 @@ public class Person {
     
     public void changeAddress(String streetAddress, String city, String province, String postal)
     {
-        
+        setStreetAddress(streetAddress);
+        setCity(city);
+        setProvince(province);
+        setPostalCode(postal);
     }
-        
-//    if (postal.length() == 6)
-//       this.postalCode = postal;
-//    else
-//        throw new IllegalArgumentException("");
-//    
-//    return postal;
-//            int len = postal.length();
-//           if ((len == 6) && (postal.charAt(3) != ' '))
-//               postalCode = postal;
-//           else
-//               throw new IllegalArgumentException("Postal code must be 6 characters with a space");
-    
+        /**
+         * toString to return firstName and lastName
+         */
+    public String toString()
+    {
+        return firstName + " " + lastName;
+    }
 
     public String setFirstName(String firstName) {
         if (firstName != "")
@@ -103,8 +93,13 @@ public class Person {
         this.province = province;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setPostalCode(String postal) {
+          if ((postal.length() > 6 || postal.length() < 6))
+            
+            throw new IllegalArgumentException("Must be 6 characters");
+            this.postalCode = postal.toUpperCase();
+        
+       
     }
 
     
@@ -113,6 +108,11 @@ public class Person {
         this.birthdate = birthdate;
     }
 
+    public int getYearBorn()
+    {   
+            return birthdate.getYear();
+    }
+    
     public String getFirstName() {
         return firstName;
     }

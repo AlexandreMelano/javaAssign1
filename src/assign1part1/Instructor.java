@@ -16,15 +16,20 @@ import java.util.Locale;
  * @author User1
  */
 public class Instructor extends Person {
-    private int employeeNumber;
+    private int employeeNum;
     private LocalDate hireDate;
-    private ArrayList <String> teachableCourses;
+    private ArrayList <String> teachableCourse;
     
-    public Instructor(String first, String last, String address, String city, String prov, String postal, LocalDate dob, int employeeNumber, LocalDate hireDate) {
+    
+    public Instructor(String first, String last, String address, String city, String prov, String postal, LocalDate dob, int employeeNum, LocalDate hireDate) {
         super(first, last, address, city, prov, postal, dob);
         
-        teachableCourses = new ArrayList<>();
+        
         setBirthday(dob);
+        setHireDate(hireDate);
+        setEmployeeNum(employeeNum);
+        teachableCourse = new ArrayList<>();
+//        canTeach(newCourse);
     }
     /*
     add courses to arraylist
@@ -32,14 +37,14 @@ public class Instructor extends Person {
     public void addTeachableCourse(String newCourse)
     {
         
-        this.teachableCourses.add(newCourse.toUpperCase());
+        this.teachableCourse.add(newCourse.toUpperCase());
     }
     /*
     validates teacher can teach the subject
     */
     public Boolean canTeach (String newCourse)
     {
-       if (teachableCourses.contains(newCourse))
+       if (teachableCourse.contains(newCourse.toUpperCase()))
                return true;
        else 
            return false;
@@ -53,6 +58,7 @@ public class Instructor extends Person {
         
         int yearsWorked = Period.between(hireDate, today).getYears();
         
+//        
         return yearsWorked;     
     }
     /*
@@ -60,16 +66,16 @@ public class Instructor extends Person {
     */
     public String listOfSubjectsCertifiedToTeach()
     {
-        String listString = String.join(", ", teachableCourses);
+        String listString = String.join(", ", teachableCourse);
         return listString;
     }
     /*
     
     */
-    public void addCourseToAbilities(String newCourse)
-    {
-        
-    }
+//    public void addCourseToAbilities(String newCourse)
+//    {
+//        
+//    }
     /*
     set instructors birthday
     */
@@ -85,7 +91,7 @@ public class Instructor extends Person {
             throw new IllegalArgumentException("the teacher must be between 18-100");
         
     }
-    /*
+    /**
     set dateHired by validating teacher hasn't been teaching longer then 80 years
     */
     public void setHireDate(LocalDate hireDate)
@@ -94,15 +100,34 @@ public class Instructor extends Person {
         
         
         
-        if (hireDate.isBefore(today.plusYears(80))) // valid employee dob
-            this.hireDate = hireDate;
-        else
-            throw new IllegalArgumentException("the teacher must be teaching less then 80 years");
         
+        if (today.getYear() - hireDate.getYear() > 80 || today.isBefore(hireDate))
+           throw new IllegalArgumentException("the teacher must be teaching less then 80 years");
+        else
+          this.hireDate = hireDate;
+           
     }
-    
+    /**
+     *  validation for employeeNum
+     */
+    public void setEmployeeNum(int employeeNum)
+    {
+        if (employeeNum <=0)
+            throw new IllegalArgumentException("Employee number must be greater then 0");
+        else
+            this.employeeNum = employeeNum;
+           
+    }
+    /**
+     *  return fistName, lastName, and employeeNum
+     * @return 
+     */
+    public String toString()
+    {
+        return getFirstName() + " " + getLastName() + " " + employeeNum;
+    }
     public int getEmployeeNum() {
-        return employeeNumber;
+        return employeeNum;
     }
 
     public LocalDate getHireDate() {
@@ -110,35 +135,35 @@ public class Instructor extends Person {
     }
 
     public ArrayList<String> getTeachableCourses() {
-        return teachableCourses;
+        return teachableCourse;
     }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
-    
+//
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public String getStreetAddress() {
+//        return streetAddress;
+//    }
+//
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public String getProvince() {
+//        return province;
+//    }
+//
+//    public String getPostalCode() {
+//        return postalCode;
+//    }
+//
+//    public LocalDate getBirthdate() {
+//        return birthdate;
+//    }
+//    
 }

@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public class Student extends Person{
     
-    private LocalDate enrolledDate;
+    private LocalDate enrollementDate;
     private int studentNum;
     private String major;
     private Boolean standing;
@@ -26,10 +26,10 @@ public class Student extends Person{
     public Student(String first, String last, String address, String city, String prov, String postal, LocalDate dob, String major, int studentNum,LocalDate enrolledD) {
         super(first, last, address, city, prov, postal, dob);
         
-     enrolledDate = enrolledD;
+     enrollementDate = enrolledD;
      setStudentNum(studentNum);
-        
-      
+     setBirthday(dob);
+     standing = true; 
      //super.birthdate.;
     }
     
@@ -38,67 +38,71 @@ public class Student extends Person{
     */
     public int getYearEnrolled()
     {
-        LocalDate today = LocalDate.now();
+//        LocalDate today = LocalDate.now();
         
-        int yearEnrolled = today.getYear();
-        return yearEnrolled;
+//        int yearEnrolled = today.getYear() - enrollementDate.getYear();
+        return enrollementDate.getYear();
     }
     /*
     this method returns years at college
     */
     public int getYearsAtCollege()
     {
-        LocalDate today = LocalDate.now();
-        
-        int enrolled = Period.between(enrolledDate, today).getYears();
-        
-        return enrolled;
+            int years = LocalDate.now().getYear() - enrollementDate.getYear();
+            
+            if (years <= 0)
+                throw new IllegalArgumentException("Years must be greater then 0");
+            return years;
+            
+            
+
     }
     /*
     this method will return true if student is in good standing and false otherwise
     */
-    public Boolean inGoodStanding(TemporalField unit)
+    public Boolean inGoodStanding()
     {
-         
-            return true;
-        else
-            return false;
+       if (standing == true)
+           return true;
+                   else 
+           return false;
         
     }
-    /*
-    this method will reinstate the students standing
-    */
-    public void reinstateStudent()
-    {
-        
-    }
+  
+   
     /*
     this will suspend and prevent the student from enrolling
     */
     public void suspendStudent()
     {
-        
+      this.standing = false;  
+    }
+      /*
+    this method will reinstate the students standing
+    */
+      public void reinstateStudent()
+    {
+        standing = true;
     }
     /*
     set the birthday of student
     */
-    public void setBirthday(LocalDate dob, LocalDate birthdate)
+    public void setBirthday(LocalDate dob)
     {
         LocalDate today = LocalDate.now();
         
         int age = Period.between(dob, today).getYears();
         
-        if (age >= 14 && age <= 90) // valid employee dob
-            this.birthdate = dob;
-        else
+        if (age < 14 || age > 90) 
             throw new IllegalArgumentException("the student must be between 14-90");
-        
+        else
+            this.birthdate = dob;
     }
     /*
     this method sets the enrolledDate
     */
     public void setEnrolledDate(LocalDate enrolledDate) {
-        this.enrolledDate = enrolledDate;
+        this.enrollementDate = enrolledDate;
     }
     /*
     this method makes sure a student number isn't 0
@@ -127,7 +131,7 @@ public class Student extends Person{
     */
     public String toString()
     {
-        return firstName + lastName + studentNum;
+        return getFirstName() + " " + getLastName()+ ", student number is " + studentNum;
     }
 
    

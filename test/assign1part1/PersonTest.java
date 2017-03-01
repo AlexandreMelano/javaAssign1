@@ -5,7 +5,6 @@
  */
 package assign1part1;
 
-import assign1part1.Person;
 import java.time.LocalDate;
 import java.time.Month;
 import org.junit.After;
@@ -335,34 +334,5 @@ public class PersonTest {
         String expResult = "31 Employment Ave, Happivale, ON, T3T2B2";
         String result = validPerson.getFullAddress();
         assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of postalCode method, of class Person.
-     */
-    @Test
-    public void testPostalCode() {
-        System.out.println("postalCode");
-        String postal = "";
-        Person instance = null;
-        String expResult = "";
-        String result = instance.postalCode(postal);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getBirthdate method, of class Person.
-     */
-    @Test
-    public void testGetBirthdate() {
-        System.out.println("getBirthdate");
-        Person instance = null;
-        LocalDate expResult = null;
-        LocalDate result = instance.getBirthdate();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 }
