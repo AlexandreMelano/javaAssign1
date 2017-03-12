@@ -10,5 +10,9 @@ package assign1part1;
  * @author User1
  */
 class InvalidStudentException extends Exception {
+
+    InvalidStudentException(String student_must_be_in_good_standing_or_there) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

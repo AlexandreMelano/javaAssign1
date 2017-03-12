@@ -48,12 +48,12 @@ public class Course {
     /**
      * checks if student is in good standing and if theres space
      */
-    public void addStudent(Student student1)
+    public void addStudent(Student student1) throws InvalidStudentException
     {
       if (student1.inGoodStanding() == true && classList.size() < maxStudents)
             classList.add(student1);
         else
-          throw new IllegalArgumentException("Student must be in good standing, or there isn't enough room");
+          throw new InvalidStudentException("Student must be in good standing, or there isn't enough room");
     }
     
     /**
