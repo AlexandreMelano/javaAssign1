@@ -30,24 +30,16 @@ public class Person {
         birthdate = dob;
         
     }
-    /*
+    /**
     This method sets the age for a Person
     */
     public int getAge()
     {
-//        LocalDate today = LocalDate.now();
-//        
-//        int age = Period.between(birthdate, today).getYears();
-        
-//         if (age >= 14 && age <= 90) // valid employee dob
-//            this.birthdate = dob;
-//        else
-//            throw new IllegalArgumentException("the Person must be between 14-90");
-        
+
         return LocalDate.now().getYear()-birthdate.getYear();
     }
     
-    /*
+    /**
     This method will return the fullAddress all together
     */
     
@@ -55,7 +47,13 @@ public class Person {
     {
         return streetAddress + ", " + city + ", " + province + ", " + postalCode;
     }
-    
+    /**
+     * validate then set address, city, province, and postal
+     * @param streetAddress
+     * @param city
+     * @param province
+     * @param postal 
+     */
     public void changeAddress(String streetAddress, String city, String province, String postal)
     {
         setStreetAddress(streetAddress);
@@ -70,29 +68,48 @@ public class Person {
     {
         return firstName + " " + lastName;
     }
-
+    /**
+     * set firstname
+     * @param firstName
+     * @return 
+     */
     public String setFirstName(String firstName) {
         if (firstName != "")
         this.firstName = firstName;
         return firstName;
     }
-
+    /**
+     * set lastNAme
+     * @param lastName 
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    /**
+     * set address
+     * @param streetAddress 
+     */
     public void setStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
     }
-
+    /**
+     * set city
+     * @param city 
+     */
     public void setCity(String city) {
         this.city = city;
     }
-
+    /**
+     * set province
+     * @param province 
+     */
     public void setProvince(String province) {
         this.province = province;
     }
-
+    /**
+     * set postal Code
+     * @param postal 
+     */
     public void setPostalCode(String postal) {
           if ((postal.length() > 6 || postal.length() < 6))
             
@@ -101,42 +118,67 @@ public class Person {
         
        
     }
-
-    
-
+    /**
+     * set birthdate
+     * @param birthdate 
+     */
     public void setBirthday(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
-
+    /**
+     * return yearborn
+     * @return 
+     */
     public int getYearBorn()
     {   
             return birthdate.getYear();
     }
-    
+    /**
+     * return firstName
+     * @return 
+     */
     public String getFirstName() {
         return firstName;
     }
-
+    /**
+     * return lastName
+     * @return 
+     */
     public String getLastName() {
         return lastName;
     }
-
+    /**
+     * return address
+     * @return 
+     */
     public String getStreetAddress() {
         return streetAddress;
     }
-
+    /**
+     * return city
+     * @return 
+     */
     public String getCity() {
         return city;
     }
-
+    /**
+     * return province
+     * @return 
+     */
     public String getProvince() {
         return province;
     }
-
+    /**
+     * return postalCode
+     * @return 
+     */
     public String getPostalCode() {
         return postalCode;
     }
-
+    /**
+     * return birthdate
+     * @return 
+     */
     public LocalDate getBirthday() {
         return birthdate;
     }

@@ -33,7 +33,7 @@ public class Student extends Person{
      //super.birthdate.;
     }
     
-    /*
+    /**
     this method returns the year the student enrolled
     */
     public int getYearEnrolled()
@@ -43,7 +43,7 @@ public class Student extends Person{
 //        int yearEnrolled = today.getYear() - enrollementDate.getYear();
         return enrollementDate.getYear();
     }
-    /*
+    /**
     this method returns years at college
     */
     public int getYearsAtCollege()
@@ -57,7 +57,7 @@ public class Student extends Person{
             
 
     }
-    /*
+    /**
     this method will return true if student is in good standing and false otherwise
     */
     public Boolean inGoodStanding()
@@ -70,21 +70,21 @@ public class Student extends Person{
     }
   
    
-    /*
+    /**
     this will suspend and prevent the student from enrolling
     */
     public void suspendStudent()
     {
       this.standing = false;  
     }
-      /*
+      /**
     this method will reinstate the students standing
     */
       public void reinstateStudent()
     {
         standing = true;
     }
-    /*
+    /**
     set the birthday of student
     */
     public void setBirthday(LocalDate dob)
@@ -98,13 +98,13 @@ public class Student extends Person{
         else
             this.birthdate = dob;
     }
-    /*
+    /**
     this method sets the enrolledDate
     */
     public void setEnrolledDate(LocalDate enrolledDate) {
         this.enrollementDate = enrolledDate;
     }
-    /*
+    /**
     this method makes sure a student number isn't 0
     */
     public void setStudentNum(int studentNum) {
@@ -114,19 +114,19 @@ public class Student extends Person{
             throw new IllegalArgumentException("Student number cannot be 0, it should have 9 digits");
        
     }
-    /*
+    /**
     sets the major
     */
     public void setMajor(String major) {
         this.major = major;
     }
-    /*
+    /**
     set the standing
     */
     public void setStanding(Boolean standing) {
         this.standing = standing;
     }
-    /*
+    /**
     toString to return firstName, lastName, and studentNum
     */
     public String toString()

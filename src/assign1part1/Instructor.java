@@ -31,7 +31,7 @@ public class Instructor extends Person {
         teachableCourse = new ArrayList<>();
 //        canTeach(newCourse);
     }
-    /*
+    /**
     add courses to arraylist
     */
     public void addTeachableCourse(String newCourse)
@@ -39,7 +39,7 @@ public class Instructor extends Person {
         
         this.teachableCourse.add(newCourse.toUpperCase());
     }
-    /*
+    /**
     validates teacher can teach the subject
     */
     public Boolean canTeach (String newCourse)
@@ -49,7 +49,7 @@ public class Instructor extends Person {
        else 
            return false;
     }
-    /*
+    /**
     return years worked at college
     */
     public int getYearsAtCollege ()
@@ -61,7 +61,7 @@ public class Instructor extends Person {
 //        
         return yearsWorked;     
     }
-    /*
+    /**
     return teachable courses as string
     */
     public String listOfSubjectsCertifiedToTeach()
@@ -69,7 +69,7 @@ public class Instructor extends Person {
         String listString = String.join(", ", teachableCourse);
         return listString;
     }
-    /*
+    /**
     
     */
 //    public void addCourseToAbilities(String newCourse)
@@ -126,44 +126,26 @@ public class Instructor extends Person {
     {
         return getFirstName() + " " + getLastName() + " " + employeeNum;
     }
+    /**
+     * return employeeNum
+     * @return 
+     */
     public int getEmployeeNum() {
         return employeeNum;
     }
-
+    /**
+     * return hireDate
+     * @return 
+     */
     public LocalDate getHireDate() {
         return hireDate;
     }
-
+    /**
+     * return teachableCourse
+     * @return 
+     */
     public ArrayList<String> getTeachableCourses() {
         return teachableCourse;
     }
-//
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public String getStreetAddress() {
-//        return streetAddress;
-//    }
-//
-//    public String getCity() {
-//        return city;
-//    }
-//
-//    public String getProvince() {
-//        return province;
-//    }
-//
-//    public String getPostalCode() {
-//        return postalCode;
-//    }
-//
-//    public LocalDate getBirthdate() {
-//        return birthdate;
-//    }
-//    
+  
 }
